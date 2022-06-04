@@ -2,6 +2,7 @@
   import { data } from './store'
 
   import Slide from './Slide.svelte'
+  import Counter from './Counter.svelte'
   import Controls from './Controls.svelte'
   import Caption from './Caption.svelte'
 
@@ -16,6 +17,7 @@
 </script>
 
 <div class="slideshow">
+  <Counter />
   <Slide />
   <Controls />
   <Caption />
