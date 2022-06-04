@@ -7,11 +7,9 @@
 
   export let category = 'steam'
 
-  const url =
-    'https://public-api.wordpress.com/rest/v1.1/sites/repo995752852.wordpress.com/posts/?category=' +
-    category
+  const BASE = 'https://public-api.wordpress.com/rest/v1.1/sites/repo995752852.wordpress.com/posts/'
 
-  fetch(url)
+  fetch(BASE + '?category=' + category)
     .then(res => res.json())
     .then(_data => ($data = _data.posts))
     .catch(error => console.error(error))
