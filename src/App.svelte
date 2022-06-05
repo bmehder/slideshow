@@ -1,22 +1,15 @@
 <script>
-  import { data } from './store'
+  import { getData } from './store'
 
   import Slide from './Slide.svelte'
   import Counter from './Counter.svelte'
   import Controls from './Controls.svelte'
   import Caption from './Caption.svelte'
 
-  export let base =
-    'https://public-api.wordpress.com/rest/v1.1/sites/repo995752852.wordpress.com/posts/'
   export let category = 'steam'
-
-  fetch(base + '?category=' + category)
-    .then(res => res.json())
-    .then(_data => ($data = _data.posts))
-    .catch(error => console.error(error))
 </script>
 
-<div class="slideshow">
+<div class="slideshow" use:getData={category}>
   <Counter />
   <Slide />
   <Controls />
