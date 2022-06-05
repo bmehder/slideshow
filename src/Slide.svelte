@@ -2,9 +2,11 @@
   import { data, selected } from './store'
 </script>
 
-<aside>
-  <img src={$data[$selected]?.featured_image} alt="Student Artwork" />
-</aside>
+{#if $data.length > 0}
+  <aside>
+    <img src={$data[$selected]?.featured_image} alt="Student Artwork" />
+  </aside>
+{/if}
 
 <style>
   aside {

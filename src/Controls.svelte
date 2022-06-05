@@ -1,14 +1,23 @@
 <script>
   import { data, selected } from './store'
 
-  const isAtEnd = () => $selected < $data.length - 1
+  const isNotAtBeginning = () => $selected > 0
 
-  const isAtBeginning = () => $selected > 0
+  const isNotAtEnd = () => $selected < $data.length - 1
 
-  const setSelectedForwards = () => (isAtEnd() ? $selected++ : ($selected = 0))
+  const setSelectedToEnd = () => ($selected = $data.length - 1)
+
+  const setSelectedToBeginning = () => ($selected = 0)
+
+  const setIncrementSelected = () => $selected++
+
+  const setDecrementSelected = () => $selected--
 
   const setSelectedBackwards = () =>
-    isAtBeginning() ? $selected-- : ($selected = $data.length - 1)
+    isNotAtBeginning() ? setDecrementSelected() : setSelectedToEnd()
+
+  const setSelectedForwards = () =>
+    isNotAtEnd() ? setIncrementSelected() : setSelectedToBeginning()
 
   const handleClick = direction =>
     direction === 'prev' ? setSelectedBackwards() : setSelectedForwards()
