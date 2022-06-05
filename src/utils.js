@@ -1,8 +1,6 @@
 import { writable } from 'svelte/store'
 
-export const index = writable(0)
-
-export const data = writable([])
+// ######## isVisible store, viewportObserver #########
 
 export const isVisible = writable(false)
 
@@ -26,6 +24,10 @@ export const viewportObserver = node => {
   }
 }
 
+// ######## data store, getData #########
+
+export const data = writable([])
+
 const BASE = 'https://public-api.wordpress.com/rest/v1.1/sites/repo995752852.wordpress.com/posts/'
 
 export const getData = (node, params) =>
@@ -33,3 +35,7 @@ export const getData = (node, params) =>
     .then(res => res.json())
     .then(_data => data.set(_data.posts))
     .catch(error => console.error(error))
+
+// ######## index store #########
+
+export const index = writable(0)

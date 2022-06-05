@@ -1,5 +1,5 @@
 <script>
-  import { data, index, isVisible, viewportObserver } from './store'
+  import { data, index, isVisible, viewportObserver } from './utils'
 
   // ######## PREDICATES #########
 

@@ -1,5 +1,5 @@
 <script>
-  import { data, index } from './store'
+  import { data, index } from './utils'
 </script>
 
 {#if $data.length > 0}

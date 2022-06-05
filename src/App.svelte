@@ -1,5 +1,5 @@
 <script>
-  import { getData } from './store'
+  import { getData } from './utils'
 
   import Slide from './Slide.svelte'
   import Counter from './Counter.svelte'

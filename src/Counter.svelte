@@ -1,5 +1,5 @@
 <script>
-  import { data, index } from './store'
+  import { data, index } from './utils'
 </script>
 
 <div>{$index + 1} / {$data.length}</div>
