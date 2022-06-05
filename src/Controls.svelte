@@ -1,21 +1,29 @@
 <script>
   import { data, index } from './store'
 
+  // ######## PREDICATES #########
+
   const isIndexNotAtBeginning = () => $index > 0
 
   const isIndexNotAtEnd = () => $index < $data.length - 1
+
+  // ######## STATE MUTATIONS #########
 
   const setIndexToEnd = () => ($index = $data.length - 1)
 
   const setIndexToBeginning = () => ($index = 0)
 
-  const setIndexIncrement = () => $index++
+  const setIndexToNext = () => $index++
 
-  const setIndexDecrement = () => $index--
+  const setIndexToPrev = () => $index--
 
-  const goBackwards = () => (isIndexNotAtBeginning() ? setIndexDecrement() : setIndexToEnd())
+  // ######## EVENT HANDLER CALLBACKS #########
 
-  const goForwards = () => (isIndexNotAtEnd() ? setIndexIncrement() : setIndexToBeginning())
+  const goBackwards = () => (isIndexNotAtBeginning() ? setIndexToPrev() : setIndexToEnd())
+
+  const goForwards = () => (isIndexNotAtEnd() ? setIndexToNext() : setIndexToBeginning())
+
+  // ######## EVENT HANDLERS #########
 
   const handleClick = direction => (direction === 'prev' ? goBackwards() : goForwards())
 
@@ -38,7 +46,7 @@
     top: 50%;
     width: auto;
     padding: 16px;
-    margin-top: -50px;
+    transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     font-weight: bold;
