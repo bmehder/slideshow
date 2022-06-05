@@ -24,9 +24,6 @@
 </div>
 
 <style>
-  :global(*) {
-    box-sizing: border-box;
-  }
   .slideshow {
     position: relative;
     padding: 4rem 0;

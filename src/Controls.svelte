@@ -1,15 +1,28 @@
 <script>
   import { data, selected } from './store'
 
-  const goForwards = () => ($selected < $data.length - 1 ? $selected++ : ($selected = 0))
+  const isAtEnd = () => $selected < $data.length - 1
 
-  const goBackwards = () => ($selected > 0 ? $selected-- : ($selected = $data.length - 1))
+  const isAtBeginning = () => $selected > 0
 
-  const handleClick = direction => (direction === 'prev' ? goBackwards() : goForwards())
+  const setSelectedForwards = () => (isAtEnd() ? $selected++ : ($selected = 0))
+
+  const setSelectedBackwards = () =>
+    isAtBeginning() ? $selected-- : ($selected = $data.length - 1)
+
+  const handleClick = direction =>
+    direction === 'prev' ? setSelectedBackwards() : setSelectedForwards()
+
+  const handleKeydown = e => {
+    e.key === 'ArrowLeft' && setSelectedBackwards()
+    e.key === 'ArrowRight' && setSelectedForwards()
+  }
 </script>
 
-<a class="prev" href="/" on:click|preventDefault={() => handleClick('prev')}>&#10094;</a>
-<a class="next" href="/" on:click|preventDefault={() => handleClick('next')}>&#10095;</a>
+<svelte:window on:keydown={handleKeydown} />
+
+<span class="prev" on:click={() => handleClick('prev')}>&#10094;</span>
+<span class="next" on:click={() => handleClick('next')}>&#10095;</span>
 
 <style>
   .prev,
@@ -27,6 +40,10 @@
     border-radius: 0 3px 3px 0;
     user-select: none;
     text-decoration: none;
+  }
+  .prev:hover,
+  .next:hover {
+    background-color: #307ad5;
   }
   .prev {
     left: 0;
