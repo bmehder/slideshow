@@ -1,4 +1,5 @@
 <script>
+  import { isVisible, viewportObserver } from './utils'
   import { data, index } from './store'
 
   // ######## PREDICATES #########
@@ -33,9 +34,10 @@
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={$isVisible && handleKeydown} />
 
-<span class="prev" on:click={() => handleClick('prev')}>&#10094;</span>
+<span class="prev" on:click={() => handleClick('prev')} use:viewportObserver>&#10094;</span>
+
 <span class="next" on:click={() => handleClick('next')}>&#10095;</span>
 
 <style>
