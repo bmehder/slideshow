@@ -1,8 +1,8 @@
 <script>
-  import { data, selected } from './store'
+  import { data, index } from './store'
 </script>
 
-<div>{$selected + 1} / {$data.length}</div>
+<div>{$index + 1} / {$data.length}</div>
 
 <style>
   div {

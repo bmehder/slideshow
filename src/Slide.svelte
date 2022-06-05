@@ -1,10 +1,10 @@
 <script>
-  import { data, selected } from './store'
+  import { data, index } from './store'
 </script>
 
 {#if $data.length > 0}
   <aside>
-    <img src={$data[$selected]?.featured_image} alt="Student Artwork" />
+    <img src={$data[$index]?.featured_image} alt="Student Artwork" />
   </aside>
 {/if}
 

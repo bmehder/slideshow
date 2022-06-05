@@ -1,10 +1,10 @@
 <script>
-  import { data, selected } from './store'
+  import { data, index } from './store'
 </script>
 
 {#if $data.length > 0}
   <div>
-    <p>{@html $data[$selected]?.excerpt}</p>
+    <p>{@html $data[$index]?.excerpt}</p>
   </div>
 {/if}
 

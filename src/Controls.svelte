@@ -1,30 +1,27 @@
 <script>
-  import { data, selected } from './store'
+  import { data, index } from './store'
 
-  const isNotAtBeginning = () => $selected > 0
+  const isIndexNotAtBeginning = () => $index > 0
 
-  const isNotAtEnd = () => $selected < $data.length - 1
+  const isIndexNotAtEnd = () => $index < $data.length - 1
 
-  const setSelectedToEnd = () => ($selected = $data.length - 1)
+  const setIndexToEnd = () => ($index = $data.length - 1)
 
-  const setSelectedToBeginning = () => ($selected = 0)
+  const setIndexToBeginning = () => ($index = 0)
 
-  const setIncrementSelected = () => $selected++
+  const setIndexIncrement = () => $index++
 
-  const setDecrementSelected = () => $selected--
+  const setIndexDecrement = () => $index--
 
-  const setSelectedBackwards = () =>
-    isNotAtBeginning() ? setDecrementSelected() : setSelectedToEnd()
+  const goBackwards = () => (isIndexNotAtBeginning() ? setIndexDecrement() : setIndexToEnd())
 
-  const setSelectedForwards = () =>
-    isNotAtEnd() ? setIncrementSelected() : setSelectedToBeginning()
+  const goForwards = () => (isIndexNotAtEnd() ? setIndexIncrement() : setIndexToBeginning())
 
-  const handleClick = direction =>
-    direction === 'prev' ? setSelectedBackwards() : setSelectedForwards()
+  const handleClick = direction => (direction === 'prev' ? goBackwards() : goForwards())
 
   const handleKeydown = e => {
-    e.key === 'ArrowLeft' && setSelectedBackwards()
-    e.key === 'ArrowRight' && setSelectedForwards()
+    e.key === 'ArrowLeft' && goBackwards()
+    e.key === 'ArrowRight' && goForwards()
   }
 </script>
 
