@@ -7,9 +7,11 @@
   import Caption from './Caption.svelte'
 
   export let category = 'steam'
+  export let base =
+    'https://public-api.wordpress.com/rest/v1.1/sites/repo995752852.wordpress.com/posts/'
 </script>
 
-<div class="slideshow" use:getData={category}>
+<div class="slideshow" use:getData={{ category, base }}>
   <Counter />
   <Slide />
   <Controls />
